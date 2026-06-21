@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: evidence-review
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: CLAIM_REVIEW_MODEL
+        value: claude-sonnet-4-6
